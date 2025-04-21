@@ -1,35 +1,36 @@
-cloud-autodeploy
+# cloud-autodeploy
+
 Déploiement automatisé d'une infrastructure web sur AWS avec Terraform, Ansible et GitHub Actions.
 
 Ce projet illustre une chaîne complète de déploiement : provisionnement cloud, configuration système, et automatisation via CI/CD.
 
-Objectifs
-Créer une VM sur AWS avec Terraform (VPC, subnet, security group, EC2)
+## Objectifs
 
-Configurer automatiquement l’EC2 avec Ansible (installation de Nginx et page HTML)
+- Créer une VM sur AWS avec Terraform (VPC, subnet, security group, EC2)
+- Configurer automatiquement l’EC2 avec Ansible (installation de Nginx et page HTML)
+- Automatiser le tout via GitHub Actions à chaque push
 
-Automatiser le tout via GitHub Actions à chaque push
+## Outils
 
-Outils
-Terraform : infrastructure as code
+- Terraform : infrastructure as code
+- Ansible : configuration distante
+- GitHub Actions : intégration continue
+- AWS EC2 : hébergement de la VM
 
-Ansible : configuration distante
+## CI/CD avec GitHub Actions
 
-GitHub Actions : intégration continue
+Déclenché automatiquement à chaque push sur `main`.
 
-AWS EC2 : hébergement de la VM
+### Secrets GitHub requis
 
-CI/CD avec GitHub Actions
-Déclenché automatiquement à chaque push sur main.
+- `AWS_ACCESS_KEY_ID`
+- `AWS_SECRET_ACCESS_KEY`
+- `ANSIBLE_PRIVATE_KEY`
 
-Secrets GitHub requis :
+## Suppression des ressources
 
-AWS_ACCESS_KEY_ID
-
-AWS_SECRET_ACCESS_KEY
-
-ANSIBLE_PRIVATE_KEY
-
-Suppression des ressources
+```bash
 cd infra/terraform
+terraform destroy
+
 terraform destroy
